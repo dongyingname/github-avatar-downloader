@@ -26,14 +26,14 @@ function getRepoContributors(repoOwner, repoName, cb) {
     // aquire data and convert into js object
     //return data;
 }
-
+//call back function. Added another parameter input which is the name of the contributer
 function downloadImageByURL(url, input, filePath) {
     // ...
     request.get(url)
     .on('error',function(err){
         throw err;
     })
-    .on('end', function(){ console.log('downloading picture of' + input.login +  'into ' + filePath) })
+    .on('end', function(){ console.log('Downloading picture of' + input.login +  'into ' + filePath) })
     .pipe(fs.createWriteStream(filePath))
     
     .on('finish', function(){ console.log('Finished downloading picture of' + input.login +  'into ' + filePath) })
