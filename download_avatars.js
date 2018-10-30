@@ -19,7 +19,7 @@ var urlInfo = {
 		'User-Agent': 'request',
 		'Authorization': 'token ' + token.GITHUB_TOKEN
 	}
-}
+};
 
 //function that converts internet data into node object, and also use the call back fun
 //ction to download images
@@ -31,7 +31,7 @@ function getRepoContributors(options, cb) {
 			var img = input.avatar_url; //each image URL
 			var path = './avatars/' + input.login + '.png'; //download path
 			cb(img, input, path);//use callback function
-		})
+		});
 	});
 }
 
@@ -47,10 +47,6 @@ function downloadImageByURL(url, input, filePath) {
 			console.log('Downloading picture of ' + input.login + ' into ' + filePath);
 		})
 		.pipe(fs.createWriteStream(filePath))
-		//finished downloading
-		.on('finish', function () {
-			console.log('Finished downloading picture of ' + input.login + ' into ' + filePath);
-		})
 }
 
 //execute the program

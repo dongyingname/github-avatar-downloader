@@ -2,6 +2,7 @@
 
 ## try.js is a test file to run test of some codes using the module in try folder
 ## Please refer to download_avatars.js
+## Please refer to Line 19 - 20 to change your secrets.js accordingly
 
 # GitHub Avatar Downloader
 
