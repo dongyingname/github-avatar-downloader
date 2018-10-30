@@ -10,6 +10,7 @@ console.log('Welcome to the GitHub Avatar Downloader!');
 
 //get started
 //convert user input into object for the function
+//redo the original option object so that it can accpet user input
 var owner = mine[0];
 var repo = mine[1];
 var urlInfo = {
@@ -20,15 +21,16 @@ var urlInfo = {
 	}
 }
 
-//function that convert internet data into node object
+//function that converts internet data into node object, and also use the call back fun
+//ction to download images
 function getRepoContributors(options, cb) {
 	request(options, function (err, res, body) {
-		data = JSON.parse(body); //got the object with names and urls
-
+		data = JSON.parse(body);
+		//got the object with names and urls
 		data.forEach(function (input) {
-			var img = input.avatar_url;
-			var path = './avatars/' + input.login;
-			cb(img, input, path);
+			var img = input.avatar_url; //each image URL
+			var path = './avatars/' + input.login; //download path
+			cb(img, input, path);//use callback function
 		})
 	});
 }
@@ -36,19 +38,18 @@ function getRepoContributors(options, cb) {
 //call back function. Added another parameter input which is the name of the contributer
 //consolelog out the status of downloads and download the images into respective folders
 function downloadImageByURL(url, input, filePath) {
-	// ...
 	request.get(url)
 		.on('error', function (err) {
 			throw err;
 		})
 		//start to download
 		.on('end', function () {
-			console.log('Downloading picture of' + input.login + 'into ' + filePath)
+			console.log('Downloading picture of' + input.login + 'into ' + filePath);
 		})
 		.pipe(fs.createWriteStream(filePath))
 		//finished downloading
 		.on('finish', function () {
-			console.log('Finished downloading picture of' + input.login + 'into ' + filePath)
+			console.log('Finished downloading picture of' + input.login + 'into ' + filePath);
 		})
 }
 
