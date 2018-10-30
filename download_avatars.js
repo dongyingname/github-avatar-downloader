@@ -29,7 +29,7 @@ function getRepoContributors(options, cb) {
 		//got the object with names and urls
 		data.forEach(function (input) {
 			var img = input.avatar_url; //each image URL
-			var path = './avatars/' + input.login; //download path
+			var path = './avatars/' + input.login + '.png'; //download path
 			cb(img, input, path);//use callback function
 		})
 	});
