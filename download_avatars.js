@@ -44,12 +44,12 @@ function downloadImageByURL(url, input, filePath) {
 		})
 		//start to download
 		.on('end', function () {
-			console.log('Downloading picture of' + input.login + 'into ' + filePath);
+			console.log('Downloading picture of ' + input.login + ' into ' + filePath);
 		})
 		.pipe(fs.createWriteStream(filePath))
 		//finished downloading
 		.on('finish', function () {
-			console.log('Finished downloading picture of' + input.login + 'into ' + filePath);
+			console.log('Finished downloading picture of ' + input.login + ' into ' + filePath);
 		})
 }
 
